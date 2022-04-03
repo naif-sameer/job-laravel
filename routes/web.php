@@ -44,7 +44,9 @@ Route::get('/profile', [ProfileController::class, 'index']);
 
 Route::get('/dashboard/user-info',  [DashboardController::class, 'index']);
 
+
 Route::get('/dashboard/courses', [DashboardController::class, 'courses']);
+
 
 Route::get('/dashboard/education', [DashboardController::class, 'education']);
 
