@@ -11,7 +11,6 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SignupController;
 use Illuminate\Support\Facades\Route;
-use PhpParser\Node\Expr\FuncCall;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,14 +41,16 @@ Route::get('/signup', [SignupController::class, 'index']);
 
 Route::get('/profile', [ProfileController::class, 'index']);
 
-Route::get('/dashboard/user-info',  [DashboardController::class, 'index']);
 
+// dashboard
+Route::prefix('dashboard')->group(function () {
+  Route::get('/user-info',  [DashboardController::class, 'index']);
 
-Route::get('/dashboard/courses', [DashboardController::class, 'courses']);
+  Route::get('/courses', [DashboardController::class, 'courses']);
 
+  Route::get('/education', [DashboardController::class, 'education']);
 
-Route::get('/dashboard/education', [DashboardController::class, 'education']);
+  Route::get('/experience', [DashboardController::class, 'experience']);
 
-Route::get('/dashboard/experience', [DashboardController::class, 'experience']);
-
-Route::get('/dashboard/skills', [DashboardController::class, 'skills']);
+  Route::get('/skills', [DashboardController::class, 'skills']);
+});

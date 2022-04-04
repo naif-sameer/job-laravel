@@ -13,7 +13,7 @@ class SignupController extends Controller
    */
   public function index()
   {
-    return view('signup');
+    return view('web.signup');
   }
 
   /**
