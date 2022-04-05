@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
+use App\Http\Controllers\Controller;
+use App\Models\Job;
 use Illuminate\Http\Request;
 
-class ContactUsController extends Controller
+class JobController extends Controller
 {
   /**
    * Display a listing of the resource.
@@ -13,7 +15,7 @@ class ContactUsController extends Controller
    */
   public function index()
   {
-    return view('web.contact-us');
+    return view('admin.job');
   }
 
   /**
@@ -40,10 +42,10 @@ class ContactUsController extends Controller
   /**
    * Display the specified resource.
    *
-   * @param  int  $id
+   * @param  \App\Models\Job  $job
    * @return \Illuminate\Http\Response
    */
-  public function show($id)
+  public function show(Job $job)
   {
     //
   }
@@ -51,10 +53,10 @@ class ContactUsController extends Controller
   /**
    * Show the form for editing the specified resource.
    *
-   * @param  int  $id
+   * @param  \App\Models\Job  $job
    * @return \Illuminate\Http\Response
    */
-  public function edit($id)
+  public function edit(Job $job)
   {
     //
   }
@@ -63,10 +65,10 @@ class ContactUsController extends Controller
    * Update the specified resource in storage.
    *
    * @param  \Illuminate\Http\Request  $request
-   * @param  int  $id
+   * @param  \App\Models\Job  $job
    * @return \Illuminate\Http\Response
    */
-  public function update(Request $request, $id)
+  public function update(Request $request, Job $job)
   {
     //
   }
@@ -74,10 +76,10 @@ class ContactUsController extends Controller
   /**
    * Remove the specified resource from storage.
    *
-   * @param  int  $id
+   * @param  \App\Models\Job  $job
    * @return \Illuminate\Http\Response
    */
-  public function destroy($id)
+  public function destroy(Job $job)
   {
     //
   }

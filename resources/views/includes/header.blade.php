@@ -49,7 +49,10 @@
 
             <ul class="dropdown-menu rounded-4 p-4" aria-labelledby="dropdownMenuLink">
               <li>
-                <a class="dropdown-item" href="/dashboard/user-info">Dashboard</a>
+                <a class="dropdown-item" href="/profile/user-info">User dashboard</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/admin">Admin dashboard</a>
               </li>
               <li>
                 <a class="dropdown-item" href="/profile">Profile</a>

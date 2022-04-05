@@ -1,0 +1,129 @@
+{
+  "0 debug pnpm:scope": {
+    "selected": 1
+  },
+  "1 debug pnpm:package-manifest": {
+    "initial": {
+      "private": true,
+      "scripts": {
+        "dev": "npm run development",
+        "development": "mix",
+        "watch": "mix watch",
+        "watch-poll": "mix watch -- --watch-options-poll=1000",
+        "hot": "mix watch --hot",
+        "prod": "npm run production",
+        "production": "mix --production"
+      },
+      "devDependencies": {
+        "axios": "^0.25",
+        "laravel-mix": "^6.0.6",
+        "lodash": "^4.17.19",
+        "postcss": "^8.1.14"
+      }
+    },
+    "prefix": "C:\\Users\\Elite\\Desktop\\coding__academy\\2-coding-php\\job-finder"
+  },
+  "2 debug pnpm:context": {
+    "currentLockfileExists": false,
+    "storeDir": "C:\\Users\\Elite\\.pnpm-store\\v3",
+    "virtualStoreDir": "C:\\Users\\Elite\\Desktop\\coding__academy\\2-coding-php\\job-finder\\node_modules\\.pnpm"
+  },
+  "3 debug pnpm:stage": {
+    "prefix": "C:\\Users\\Elite\\Desktop\\coding__academy\\2-coding-php\\job-finder",
+    "stage": "resolution_started"
+  },
+  "4 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/axios/0.25.0",
+    "wanted": {
+      "dependentId": ".",
+      "name": "axios",
+      "rawSpec": "^0.25"
+    }
+  },
+  "5 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/axios/0.25.0",
+    "requester": "C:\\Users\\Elite\\Desktop\\coding__academy\\2-coding-php\\job-finder",
+    "status": "resolved"
+  },
+  "6 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/autoprefixer/10.4.4",
+    "wanted": {
+      "dependentId": ".",
+      "name": "autoprefixer",
+      "rawSpec": "latest"
+    }
+  },
+  "7 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/autoprefixer/10.4.4",
+    "requester": "C:\\Users\\Elite\\Desktop\\coding__academy\\2-coding-php\\job-finder",
+    "status": "resolved"
+  },
+  "8 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/lodash/4.17.21",
+    "wanted": {
+      "dependentId": ".",
+      "name": "lodash",
+      "rawSpec": "^4.17.19"
+    }
+  },
+  "9 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/lodash/4.17.21",
+    "requester": "C:\\Users\\Elite\\Desktop\\coding__academy\\2-coding-php\\job-finder",
+    "status": "resolved"
+  },
+  "10 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/laravel-mix/6.0.43",
+    "wanted": {
+      "dependentId": ".",
+      "name": "laravel-mix",
+      "rawSpec": "^6.0.6"
+    }
+  },
+  "11 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/laravel-mix/6.0.43",
+    "requester": "C:\\Users\\Elite\\Desktop\\coding__academy\\2-coding-php\\job-finder",
+    "status": "resolved"
+  },
+  "12 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/postcss/8.4.12",
+    "wanted": {
+      "dependentId": ".",
+      "name": "postcss",
+      "rawSpec": "^8.1.14"
+    }
+  },
+  "13 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/postcss/8.4.12",
+    "requester": "C:\\Users\\Elite\\Desktop\\coding__academy\\2-coding-php\\job-finder",
+    "status": "resolved"
+  },
+  "14 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/tailwindcss/3.0.23",
+    "wanted": {
+      "dependentId": ".",
+      "name": "tailwindcss",
+      "rawSpec": "latest"
+    }
+  },
+  "15 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/tailwindcss/3.0.23",
+    "requester": "C:\\Users\\Elite\\Desktop\\coding__academy\\2-coding-php\\job-finder",
+    "status": "resolved"
+  },
+  "16 error pnpm": {
+    "code": "ERR_PNPM_NO_OFFLINE_META",
+    "pkgsStack": [
+      {
+        "id": "registry.npmjs.org/laravel-mix/6.0.43",
+        "name": "laravel-mix",
+        "version": "6.0.43"
+      }
+    ],
+    "err": {
+      "name": "pnpm",
+      "message": "Failed to resolve @types/babel__core@>=7.1.16 <8.0.0-0 in package mirror C:\\Users\\Elite\\AppData\\Local\\pnpm-cache\\metadata\\registry.npmjs.org\\@types\\babel__core.json",
+      "code": "ERR_PNPM_NO_OFFLINE_META",
+      "stack": "pnpm: Failed to resolve @types/babel__core@>=7.1.16 <8.0.0-0 in package mirror C:\\Users\\Elite\\AppData\\Local\\pnpm-cache\\metadata\\registry.npmjs.org\\@types\\babel__core.json\n    at exports2.default (C:\\Users\\Elite\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\pnpm.cjs:85455:17)\n    at async resolveNpm (C:\\Users\\Elite\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\pnpm.cjs:85903:22)\n    at async Object.resolve (C:\\Users\\Elite\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\pnpm.cjs:86117:34)\n    at async run (C:\\Users\\Elite\\AppData\\Roaming\\npm\\node_modules\\pnpm\\dist\\pnpm.cjs:74193:23)"
+    }
+  }
+}
