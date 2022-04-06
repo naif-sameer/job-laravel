@@ -5,27 +5,31 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Windmill Dashboard</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="{{ asset('assets/css/tailwind.output.css') }}" />
-  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-  <script src="{{ asset('assets/js/init-alpine.js') }}"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" defer></script>
-  <script src="{{ asset('assets/js/charts-lines.js') }}" defer></script>
-  <script src="{{ asset('assets/js/charts-pie.js') }}" defer></script>
+  <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+
+  <style>
+    .full-h {
+      height: 100vh;
+    }
+
+  </style>
 </head>
 
 <body>
-  <div class="flex h-screen bg-gray-50 dark:bg-gray-900" :class="{'overflow-hidden': isSideMenuOpen }">
-    <!-- Desktop sidebar -->
-    @include('includes.admin-sidbar')
 
-    <div class="flex w-full flex-1 flex-col">
-      @include('layouts.admin-header')
+  <div class="w-full">
+    <div class="row full-h w-100">
+      @include('includes.admin.sidebar')
 
-      @yield('content')
+      {{-- body --}}
+      <div class="col-8 px-4">
+        @yield('content')
+      </div>
     </div>
   </div>
+
+
+  <script src="{{ asset('js/bootstrap.bundle.js') }}"></script>
 </body>
 
 </html>
