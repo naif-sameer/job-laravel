@@ -18,13 +18,9 @@
 </head>
 
 <body class="bg-light">
-
-
-  @include('includes.header')
+  @include('includes.user.header')
 
   @yield('content')
-
-
 
   <!------------------- start footer section ------------------->
   <footer class="bg-light text-dark mt-5 py-3">
