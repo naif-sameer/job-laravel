@@ -19,6 +19,7 @@ return new class extends Migration
       $table->string('description');
       $table->string('image');
       $table->string('link');
+      $table->boolean('is_active')->default(1);
       $table->timestamps();
     });
   }

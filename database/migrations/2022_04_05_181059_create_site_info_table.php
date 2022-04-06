@@ -17,6 +17,7 @@ return new class extends Migration
       $table->id();
       $table->string('logo_image');
       $table->string('footer_copyright');
+      $table->boolean('is_active')->default(1);
       $table->timestamps();
     });
   }

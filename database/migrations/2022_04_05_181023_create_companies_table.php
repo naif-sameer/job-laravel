@@ -19,6 +19,7 @@ return new class extends Migration
       $table->string('logo');
       $table->string('description');
       $table->string('location');
+      $table->boolean('is_active')->default(1);
       $table->timestamps();
     });
   }
