@@ -7,8 +7,10 @@ $activeNav = 'slider';
 @section('content')
   <main class="mt-5">
     {{-- title --}}
-    <div>
+    <div class="d-flex justify-content-between">
       <h2> Slider </h2>
+
+      <button class="btn btn-primary px-4" data-bs-toggle="modal" data-bs-target="#addModal">Add</button>
     </div>
 
     {{-- table --}}
@@ -33,9 +35,9 @@ $activeNav = 'slider';
           <td>New operation system is coming.....................................</td>
           <td>
             <div class="d-flex gap-2">
-              <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">Add</button>
-
               <button class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editModal">Edit</button>
+
+              <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
             </div>
           </td>
         </tr>
@@ -79,6 +81,25 @@ $activeNav = 'slider';
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
           </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{-- delete modal --}}
+  <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModalTitle">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>This is a vertically centered modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger">Delete</button>
         </div>
       </div>
     </div>

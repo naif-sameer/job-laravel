@@ -6,8 +6,10 @@ $activeNav = 'about';
 @section('content')
   <main class="mt-5">
     {{-- title --}}
-    <div>
+    <div class="d-flex justify-content-between">
       <h2> About us </h2>
+
+      <button class="btn btn-primary px-4" data-bs-toggle="modal" data-bs-target="#addModal">Add</button>
     </div>
 
     {{-- table --}}
@@ -40,6 +42,68 @@ $activeNav = 'about';
     </table>
   </main>
 
+  {{-- add  modal --}}
+  <div class="modal fade" id="addModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="">add New job</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+
+          {{-- form --}}
+          <form class="needs-validation row">
+            {{-- title --}}
+            <div class="mb-3">
+              <label for="add-input-title" class="form-label">Title</label>
+              <input type="text" class="form-control" id="add-input-title" placeholder="">
+            </div>
+
+
+
+
+            {{-- description --}}
+            <div class="mb-3">
+              <label for="description-textarea" class="form-label">Description</label>
+              <textarea class="form-control" id="description-textarea" rows="3"></textarea>
+            </div>
+
+            {{-- location --}}
+            <div class="mb-3">
+              <label for="add-input-location" class="form-label">location</label>
+              <input type="text" class="form-control" id="add-input-location" placeholder="">
+            </div>
+
+            {{-- actions --}}
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Add</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{-- delete modal --}}
+  <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModalTitle">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>This is a vertically centered modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   {{-- edit  modal --}}
   <div class="modal fade" id="editModal" tabindex="-1">
