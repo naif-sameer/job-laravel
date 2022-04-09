@@ -8,79 +8,74 @@ use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
-  /**
-   * Display a listing of the resource.
-   *
-   * @return \Illuminate\Http\Response
-   */
+  // index
   public function index()
   {
-    return view('admin.service');
+    $services = Service::all()->where('is_active', 1);
+    // $services = ['hi there'];
+
+    return view('admin.service', compact('services'));
   }
 
-  /**
-   * Show the form for creating a new resource.
-   *
-   * @return \Illuminate\Http\Response
-   */
-  public function create()
-  {
-    //
-  }
-
-  /**
-   * Store a newly created resource in storage.
-   *
-   * @param  \Illuminate\Http\Request  $request
-   * @return \Illuminate\Http\Response
-   */
+  // add
   public function store(Request $request)
   {
-    //
+    $service = new Service();
+
+    $request->validate([
+      'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+      'title' => 'required',
+      'description' => 'required',
+    ]);
+
+    $file = $request->file('image');
+    $file->store('images', ['disk' => 'assets']);
+
+    $service->title = $request->input('title');
+    $service->description = $request->input('description');
+    $service->image = $file->hashName();
+    $service->save();
+
+    return redirect('admin/services')->with('status', 'service added');
   }
 
-  /**
-   * Display the specified resource.
-   *
-   * @param  \App\Models\Service  $service
-   * @return \Illuminate\Http\Response
-   */
-  public function show(Service $service)
+  // edit
+  public function update(Request $request)
   {
-    //
+    $id = $request->id;
+
+    $request->validate([
+      'title' => 'required',
+      'description' => 'required',
+    ]);
+
+    $file = $request->file('image');
+
+    $data = [
+      'title' => $request->input('title'),
+      "description" => $request->input('description')
+    ];
+
+    if ($file) {
+      $file->store('images', ['disk' => 'assets']);
+      $data['image'] = $file->hashName();
+    }
+
+    Service::where('id', $id)->update($data);
+
+
+    return redirect('admin/services')->with('status', 'service edited');
   }
 
-  /**
-   * Show the form for editing the specified resource.
-   *
-   * @param  \App\Models\Service  $service
-   * @return \Illuminate\Http\Response
-   */
-  public function edit(Service $service)
+  // delete
+  public function destroy(Request $request)
   {
-    //
-  }
+    $id = $request->id;
 
-  /**
-   * Update the specified resource in storage.
-   *
-   * @param  \Illuminate\Http\Request  $request
-   * @param  \App\Models\Service  $service
-   * @return \Illuminate\Http\Response
-   */
-  public function update(Request $request, Service $service)
-  {
-    //
-  }
+    $result = Service::where('id', $id)->update([
+      'is_active' => 0
+    ]);
 
-  /**
-   * Remove the specified resource from storage.
-   *
-   * @param  \App\Models\Service  $service
-   * @return \Illuminate\Http\Response
-   */
-  public function destroy(Service $service)
-  {
-    //
+    return redirect('/admin/services')->with(['status' => 'Service deleted']);
   }
 }

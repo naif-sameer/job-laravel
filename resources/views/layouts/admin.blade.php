@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html :class="{'theme-dark': dark }" x-data="data()" lang="en">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8" />
@@ -32,6 +32,8 @@
 
 
   <script src="{{ asset('js/bootstrap.bundle.js') }}"></script>
+  <script src="{{ asset('js/alpinejs.js') }}"></script>
+
 </body>
 
 </html>

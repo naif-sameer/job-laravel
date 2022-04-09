@@ -3,84 +3,79 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\About;
+use App\Models\AboutUs;
 use Illuminate\Http\Request;
 
 class AboutController extends Controller
 {
-  /**
-   * Display a listing of the resource.
-   *
-   * @return \Illuminate\Http\Response
-   */
+  // index
   public function index()
   {
-    return view('admin.about');
+    $about = AboutUs::all()->where('is_active', 1);
+    // $about = ['hi there'];
+
+    return view('admin.about', compact('about'));
   }
 
-  /**
-   * Show the form for creating a new resource.
-   *
-   * @return \Illuminate\Http\Response
-   */
-  public function create()
-  {
-    //
-  }
-
-  /**
-   * Store a newly created resource in storage.
-   *
-   * @param  \Illuminate\Http\Request  $request
-   * @return \Illuminate\Http\Response
-   */
+  // add
   public function store(Request $request)
   {
-    //
+    $about = new AboutUs();
+
+    $request->validate([
+      'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+      'title' => 'required',
+      'description' => 'required',
+    ]);
+
+    $file = $request->file('image');
+    $file->store('images', ['disk' => 'assets']);
+
+    $about->title = $request->input('title');
+    $about->description = $request->input('description');
+    $about->image = $file->hashName();
+    $about->save();
+
+    return redirect('admin/about')->with('status', 'about added');
   }
 
-  /**
-   * Display the specified resource.
-   *
-   * @param  \App\Models\About  $about
-   * @return \Illuminate\Http\Response
-   */
-  public function show(About $about)
+  // edit
+  public function update(Request $request)
   {
-    //
+    $id = $request->id;
+
+    $request->validate([
+      'title' => 'required',
+      'description' => 'required',
+    ]);
+
+    $file = $request->file('image');
+
+    $data = [
+      'title' => $request->input('title'),
+      "description" => $request->input('description')
+    ];
+
+    if ($file) {
+      $file->store('images', ['disk' => 'assets']);
+      $data['image'] = $file->hashName();
+    }
+
+    AboutUs::where('id', $id)->update($data);
+
+
+    return redirect('admin/about')->with('status', 'about edited');
   }
 
-  /**
-   * Show the form for editing the specified resource.
-   *
-   * @param  \App\Models\About  $about
-   * @return \Illuminate\Http\Response
-   */
-  public function edit(About $about)
+  // delete
+  public function destroy(Request $request)
   {
-    //
-  }
+    $id = $request->id;
 
-  /**
-   * Update the specified resource in storage.
-   *
-   * @param  \Illuminate\Http\Request  $request
-   * @param  \App\Models\About  $about
-   * @return \Illuminate\Http\Response
-   */
-  public function update(Request $request, About $about)
-  {
-    //
-  }
+    $result = AboutUs::where('id', $id)->update([
+      'is_active' => 0
+    ]);
 
-  /**
-   * Remove the specified resource from storage.
-   *
-   * @param  \App\Models\About  $about
-   * @return \Illuminate\Http\Response
-   */
-  public function destroy(About $about)
-  {
-    //
+    return redirect('/admin/about')->with(['status' => 'AboutUs deleted']);
   }
 }

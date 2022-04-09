@@ -8,79 +8,64 @@ use Illuminate\Http\Request;
 
 class JobController extends Controller
 {
-  /**
-   * Display a listing of the resource.
-   *
-   * @return \Illuminate\Http\Response
-   */
+  // index
   public function index()
   {
-    return view('admin.job');
+    $jobs = Job::all()->where('is_active', 1);
+    // $jobs = ['hi there'];
+
+    return view('admin.job', compact('jobs'));
   }
 
-  /**
-   * Show the form for creating a new resource.
-   *
-   * @return \Illuminate\Http\Response
-   */
-  public function create()
-  {
-    //
-  }
-
-  /**
-   * Store a newly created resource in storage.
-   *
-   * @param  \Illuminate\Http\Request  $request
-   * @return \Illuminate\Http\Response
-   */
+  // add
   public function store(Request $request)
   {
-    //
+    $job = new Job();
+
+    $request->validate([
+      'title' => 'required',
+      'description' => 'required',
+      'country' => 'required',
+    ]);
+
+
+    $job->title = $request->input('title');
+    $job->description = $request->input('description');
+    $job->country = $request->input('country');
+    $job->save();
+
+    return redirect('admin/jobs')->with('status', 'job added');
   }
 
-  /**
-   * Display the specified resource.
-   *
-   * @param  \App\Models\Job  $job
-   * @return \Illuminate\Http\Response
-   */
-  public function show(Job $job)
+  // edit
+  public function update(Request $request)
   {
-    //
+    $id = $request->id;
+
+    $request->validate([
+      'title' => 'required',
+      'description' => 'required',
+      'country' => 'required',
+    ]);
+
+    Job::where('id', $id)->update([
+      'title' => $request->input('title'),
+      "description" => $request->input('description'),
+      "country" => $request->input('country')
+    ]);
+
+    return redirect('admin/jobs')->with('status', 'job edited');
   }
 
-  /**
-   * Show the form for editing the specified resource.
-   *
-   * @param  \App\Models\Job  $job
-   * @return \Illuminate\Http\Response
-   */
-  public function edit(Job $job)
+  // delete
+  public function destroy(Request $request)
   {
-    //
-  }
+    $id = $request->id;
 
-  /**
-   * Update the specified resource in storage.
-   *
-   * @param  \Illuminate\Http\Request  $request
-   * @param  \App\Models\Job  $job
-   * @return \Illuminate\Http\Response
-   */
-  public function update(Request $request, Job $job)
-  {
-    //
-  }
+    $result = Job::where('id', $id)->update([
+      'is_active' => 0
+    ]);
 
-  /**
-   * Remove the specified resource from storage.
-   *
-   * @param  \App\Models\Job  $job
-   * @return \Illuminate\Http\Response
-   */
-  public function destroy(Job $job)
-  {
-    //
+    return redirect('/admin/jobs')->with(['status' => 'Job deleted']);
   }
 }

@@ -18,14 +18,14 @@
     </li>
 
     <li>
-      <a href="/admin/companies" class="nav-link {{ $activeNav === 'companies' ? 'active' : '' }} text-white">
-        Companies
+      <a href="/admin/jobs" class="nav-link {{ $activeNav === 'job' ? 'active' : '' }} text-white">
+        Jobs
       </a>
     </li>
 
     <li>
-      <a href="/admin/jobs" class="nav-link {{ $activeNav === 'job' ? 'active' : '' }} text-white">
-        Jobs
+      <a href="/admin/companies" class="nav-link {{ $activeNav === 'companies' ? 'active' : '' }} text-white">
+        Companies
       </a>
     </li>
 

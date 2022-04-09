@@ -8,79 +8,77 @@ use Illuminate\Http\Request;
 
 class CompanyController extends Controller
 {
-  /**
-   * Display a listing of the resource.
-   *
-   * @return \Illuminate\Http\Response
-   */
+  // index
   public function index()
   {
-    return view('admin.companies');
+    $companies = Company::all()->where('is_active', 1);
+    // $companies = ['hi there'];
+
+    return view('admin.companies', compact('companies'));
   }
 
-  /**
-   * Show the form for creating a new resource.
-   *
-   * @return \Illuminate\Http\Response
-   */
-  public function create()
-  {
-    //
-  }
-
-  /**
-   * Store a newly created resource in storage.
-   *
-   * @param  \Illuminate\Http\Request  $request
-   * @return \Illuminate\Http\Response
-   */
+  // add
   public function store(Request $request)
   {
-    //
+    $company = new Company();
+
+    $request->validate([
+      'name' => 'required',
+      'logo' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+      'location' => 'required',
+      'description' => 'required',
+    ]);
+
+    $file = $request->file('logo');
+    $file->store('images', ['disk' => 'assets']);
+
+    $company->name = $request->input('name');
+    $company->logo = $file->hashName();
+    $company->location = $request->input('location');
+    $company->description = $request->input('description');
+    $company->save();
+
+    return redirect('admin/companies')->with('status', 'company added');
   }
 
-  /**
-   * Display the specified resource.
-   *
-   * @param  \App\Models\Company  $company
-   * @return \Illuminate\Http\Response
-   */
-  public function show(Company $company)
+  // edit
+  public function update(Request $request)
   {
-    //
+    $id = $request->id;
+
+    $request->validate([
+      'name' => 'required',
+      'location' => 'required',
+      'description' => 'required',
+    ]);
+
+    $file = $request->file('logo');
+
+    $data = [
+      'name' => $request->input('name'),
+      "description" => $request->input('description')
+    ];
+
+    if ($file) {
+      $file->store('images', ['disk' => 'assets']);
+      $data['logo'] = $file->hashName();
+    }
+
+    Company::where('id', $id)->update($data);
+
+
+    return redirect('admin/companies')->with('status', 'company edited');
   }
 
-  /**
-   * Show the form for editing the specified resource.
-   *
-   * @param  \App\Models\Company  $company
-   * @return \Illuminate\Http\Response
-   */
-  public function edit(Company $company)
+  // delete
+  public function destroy(Request $request)
   {
-    //
-  }
+    $id = $request->id;
 
-  /**
-   * Update the specified resource in storage.
-   *
-   * @param  \Illuminate\Http\Request  $request
-   * @param  \App\Models\Company  $company
-   * @return \Illuminate\Http\Response
-   */
-  public function update(Request $request, Company $company)
-  {
-    //
-  }
+    $result = Company::where('id', $id)->update([
+      'is_active' => 0
+    ]);
 
-  /**
-   * Remove the specified resource from storage.
-   *
-   * @param  \App\Models\Company  $company
-   * @return \Illuminate\Http\Response
-   */
-  public function destroy(Company $company)
-  {
-    //
+    return redirect('/admin/companies')->with(['status' => 'Company deleted']);
   }
 }
