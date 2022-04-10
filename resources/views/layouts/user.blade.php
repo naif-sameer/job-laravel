@@ -17,10 +17,15 @@
   <!------------------- head style ------------------->
 </head>
 
+
 <body class="bg-light">
-  @yield('content')
+  <div>
+    @yield('content')
+  </div>
 
   @include('includes.script')
+
+  <script src="{{ asset('js/alpinejs.js') }}"></script>
 </body>
 
 </html>

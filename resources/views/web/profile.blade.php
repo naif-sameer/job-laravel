@@ -55,10 +55,7 @@
                     <span class="text-secondary">Japan</span>
                   </div>
 
-                  <div class="d-flex justify-content-between border-bottom mb-3 pb-1">
-                    <h4 class="fs-6 fw-bold">Nationality</h4>
-                    <span class="text-secondary">Japanize</span>
-                  </div>
+
 
                   <div class="d-flex justify-content-between border-bottom mb-3 pb-1">
                     <h4 class="fs-6 fw-bold">Gender</h4>
@@ -163,51 +160,6 @@
                     Nihil repellat delectus, accusantium laboriosam eligendi
                     vero consectetur harum soluta autem aperiam!
                   </p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Education section -->
-            <div class="col-12 mt-4">
-              <div class="card p-3">
-                <header class="card-header bg-transparent">
-                  <h1 class="text-primary fs-4">Education:</h1>
-                </header>
-
-                <div class="card-body">
-                  <!-- experience 1 -->
-                  <div class="col-12 mb-5">
-                    <div class="p-3 shadow-sm">
-                      <a href="#">
-                        <h4>
-                          <b>Front end</b>
-                          <span class="fs-5">W3school</span>
-                        </h4>
-                      </a>
-
-                      <a href="#" class="text-black-50 fs-6 d-flex flex-column">
-                        <h6 class="text-black">Youtube</h6>
-                        <span>July 2021</span>
-                      </a>
-                    </div>
-                  </div>
-
-                  <!--  experience  2-->
-                  <div class="col-12 mb-5">
-                    <div class="p-3 shadow-sm">
-                      <a href="#">
-                        <h4>
-                          <b>Back end</b>
-                          <span class="fs-5">W4school</span>
-                        </h4>
-                      </a>
-
-                      <a href="#" class="text-black-50 fs-6 d-flex flex-column">
-                        <h6 class="text-black">Youtube</h6>
-                        <span>March 2022</span>
-                      </a>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
