@@ -12,24 +12,10 @@ class ProfileController extends Controller
     return view('user.user-info');
   }
 
-
   public function courses()
   {
     return view('user.courses');
   }
-
-
-  public function education()
-  {
-    return view('user.education');
-  }
-
-
-  public function experience()
-  {
-    return view('user.experience');
-  }
-
 
   public function skills()
   {

@@ -36,7 +36,7 @@
 ### useful command
 
 ```bash
-php artisan make:model UserExperience -m -c
+php artisan make:model Skill -m -c
 
 
 ```

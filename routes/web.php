@@ -6,6 +6,7 @@ use App\Http\Controllers\admin\CompanyController;
 use App\Http\Controllers\admin\JobController;
 use App\Http\Controllers\admin\ServiceController;
 use App\Http\Controllers\admin\SliderController;
+use App\Http\Controllers\SkillController;
 use App\Http\Controllers\user\ProfileController;
 use App\Http\Controllers\UserExperienceController;
 use App\Http\Controllers\web\HomeController;
@@ -45,7 +46,10 @@ Route::prefix('profile')->group(function () {
   Route::put('/experiences/{id}', [UserExperienceController::class, 'update']);
   Route::delete('/experiences/{id}', [UserExperienceController::class, 'destroy']);
 
-  Route::get('/skills', [ProfileController::class, 'skills']);
+  Route::get('/skills', [SkillController::class, 'index']);
+  Route::post('/skills', [SkillController::class, 'store']);
+  Route::put('/skills/{id}', [SkillController::class, 'update']);
+  Route::delete('/skills/{id}', [SkillController::class, 'destroy']);
 });
 
 // admin dashboard

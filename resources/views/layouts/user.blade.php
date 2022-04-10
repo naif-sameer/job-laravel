@@ -15,6 +15,11 @@
   <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" />
   <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
   <!------------------- head style ------------------->
+
+  {{-- testing --}}
+  <script>
+    window.json = (parma) => JSON.stringify(parma);
+  </script>
 </head>
 
 
@@ -23,9 +28,12 @@
     @yield('content')
   </div>
 
-  @include('includes.script')
+  <script src="{{ asset('assets/js/popper.js') }}"></script>
+  <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
 
   <script src="{{ asset('js/alpinejs.js') }}"></script>
+
+
 </body>
 
 </html>
