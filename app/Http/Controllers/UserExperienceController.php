@@ -51,10 +51,10 @@ class UserExperienceController extends Controller
     ]);
 
     UserExperience::where('id', $id)->update([
-      'title' => 'required',
-      'country' => 'required',
-      'work_time' => 'required',
-      'description' => 'required',
+      'title' => $request->input('title'),
+      'country' => $request->input('country'),
+      'work_time' => $request->input('work_time'),
+      'description' => $request->input('description'),
     ]);
 
 

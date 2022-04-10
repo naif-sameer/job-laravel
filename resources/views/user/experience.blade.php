@@ -124,9 +124,9 @@
             </div>
 
             <div class="modal-body">
-              <form action="experiences" method="post" class="row g-3">
+              <form x-bind:action="'experiences/' + experience.id" method="post" class="row g-3">
                 @csrf
-                <input type="hidden" class="js-edit-modal-id" name="experience_id" />
+                @method('PUT')
 
                 {{-- title --}}
                 <div>
