@@ -7,9 +7,8 @@ use App\Http\Controllers\admin\JobController;
 use App\Http\Controllers\admin\ServiceController;
 use App\Http\Controllers\admin\SliderController;
 use App\Http\Controllers\user\ProfileController;
-
+use App\Http\Controllers\UserExperienceController;
 use App\Http\Controllers\web\HomeController;
-
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,9 +39,11 @@ Route::prefix('profile')->group(function () {
 
   Route::get('/courses', [ProfileController::class, 'courses']);
 
-  Route::get('/education', [ProfileController::class, 'education']);
-
-  Route::get('/experience', [ProfileController::class, 'experience']);
+  // experiences
+  Route::get('/experiences', [UserExperienceController::class, 'index']);
+  Route::post('/experiences', [UserExperienceController::class, 'store']);
+  Route::put('/experiences/{id}', [UserExperienceController::class, 'update']);
+  Route::delete('/experiences/{id}', [UserExperienceController::class, 'destroy']);
 
   Route::get('/skills', [ProfileController::class, 'skills']);
 });

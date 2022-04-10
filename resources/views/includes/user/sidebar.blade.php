@@ -32,7 +32,7 @@
        </a>
 
        <!-- experience -->
-       <a href="experience" x-bind:class="activeNav ==='experiences' ? 'text-primary' :'text-secondary'"
+       <a href="experiences" x-bind:class="activeNav ==='experiences' ? 'text-primary' :'text-secondary'"
          class="d-flex align-items-center d-inline-block ms-3 border-bottom pb-2">
          <i class="fa fa-object-group pe-2"></i>
          <span class="fs-6 fw-bold">Experiences</span>

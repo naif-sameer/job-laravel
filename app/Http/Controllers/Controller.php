@@ -9,5 +9,12 @@ use Illuminate\Routing\Controller as BaseController;
 
 class Controller extends BaseController
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+  use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+  public function uploadImage($file)
+  {
+    $file->store('images', ['disk' => 'assets']);
+
+    return $file->hashName();
+  }
 }

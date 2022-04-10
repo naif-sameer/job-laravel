@@ -32,3 +32,11 @@
 | POST      | `/photos`              | store   |
 | PUT/PATCH | `/photos/{photo}`      | update  |
 | DELETE    | `/photos/{photo}`      | destroy |
+
+### useful command
+
+```bash
+php artisan make:model UserExperience -m -c
+
+
+```
