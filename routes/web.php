@@ -6,6 +6,7 @@ use App\Http\Controllers\admin\CompanyController;
 use App\Http\Controllers\admin\JobController;
 use App\Http\Controllers\admin\ServiceController;
 use App\Http\Controllers\admin\SliderController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\user\ProfileController;
 use App\Http\Controllers\UserExperienceController;
@@ -38,7 +39,10 @@ Route::get('/signup', [HomeController::class, 'signup']);
 Route::prefix('profile')->group(function () {
   Route::get('/user-info',  [ProfileController::class, 'index']);
 
-  Route::get('/courses', [ProfileController::class, 'courses']);
+  Route::get('/courses', [CourseController::class, 'index']);
+  Route::post('/courses', [CourseController::class, 'store']);
+  Route::put('/courses/{id}', [CourseController::class, 'update']);
+  Route::delete('/courses/{id}', [CourseController::class, 'destroy']);
 
   // experiences
   Route::get('/experiences', [UserExperienceController::class, 'index']);
