@@ -1,16 +1,19 @@
 <?php
 
+use App\Http\Controllers\web\HomeController;
+
 use App\Http\Controllers\admin\AboutController;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\CompanyController;
 use App\Http\Controllers\admin\JobController;
 use App\Http\Controllers\admin\ServiceController;
 use App\Http\Controllers\admin\SliderController;
-use App\Http\Controllers\CourseController;
-use App\Http\Controllers\SkillController;
-use App\Http\Controllers\user\ProfileController;
-use App\Http\Controllers\UserExperienceController;
-use App\Http\Controllers\web\HomeController;
+
+use App\Http\Controllers\user\UserExperienceController;
+use App\Http\Controllers\user\UserInfoController;
+use App\Http\Controllers\user\CourseController;
+use App\Http\Controllers\user\SkillController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,7 +40,10 @@ Route::get('/signup', [HomeController::class, 'signup']);
 
 // user dashboard
 Route::prefix('profile')->group(function () {
-  Route::get('/user-info',  [ProfileController::class, 'index']);
+  Route::get('/user-info',  [UserInfoController::class, 'index']);
+  Route::post('/user-info', [UserInfoController::class, 'store']);
+  Route::put('/user-info/{id}', [UserInfoController::class, 'update']);
+  Route::delete('/user-info/{id}', [UserInfoController::class, 'destroy']);
 
   Route::get('/courses', [CourseController::class, 'index']);
   Route::post('/courses', [CourseController::class, 'store']);

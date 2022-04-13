@@ -3,7 +3,7 @@
 @section('title', 'user info page')
 
 @section('content')
-  <main class="container-lg mt-4" x-data="{ activeNav: 'index' }">
+  <main class="container-lg mt-4" x-data="{ activeNav: 'index', user: {} }">
     <div class="row">
       @include('includes.user.sidebar')
 
@@ -14,7 +14,62 @@
             <h1 class="fs-3 fw-bold text-primary">Info</h1>
           </div>
 
+          @include('includes.alerts')
+
           <div class="card-body">
+
+            <table class="mt-4 table">
+              <thead>
+                <tr class="text-capitalize">
+                  <th scope="col">id</th>
+                  <th scope="col">name</th>
+                  <th scope="col">phone</th>
+                  <th scope="col">gender</th>
+                  <th scope="col">birth_date</th>
+                  <th scope="col">experience_id</th>
+                  <th scope="col">description</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+
+                @if (isset($userInfos))
+                  <!-- loop -->
+                  @foreach ($userInfos as $user)
+                    <tr>
+                      <th scope="row">{{ $user->id }}</th>
+
+                      <td> {{ $user->name }}</td>
+                      <td> {{ $user->phone }}</td>
+                      <td> {{ $user->gender }}</td>
+                      <td> {{ $user->birth_date }}</td>
+                      <td> {{ $user->experience_id }}</td>
+                      <td> {{ $user->description }}</td>
+
+                      {{-- actions --}}
+                      <td>
+                        <div>
+                          {{-- edit --}}
+                          <button class="btn mx-2" role="button" data-bs-toggle="modal" data-bs-target="#edit-modal"
+                            @click=" user = {{ $user }}">
+                            <i class="fa fa-pencil-alt text-secondary"></i>
+                          </button>
+
+                          {{-- delete --}}
+                          <button class="btn mx-2" role="button" data-bs-toggle="modal" data-bs-target="#delete"
+                            @click=" user = {{ $user }}">
+                            <i class="fa fa-trash text-danger"></i>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  @endforeach
+                @endif
+              </tbody>
+            </table>
+          </div>
+
+          {{-- <div class="card-body">
             <div class="row">
               <!-- image -->
               <div class="col-md-3">
@@ -106,14 +161,14 @@
                 </form>
               </div>
             </div>
-          </div>
+          </div> --}}
         </div>
       </section>
     </div>
   </main>
 
   <!-- Edit user avatar image model -->
-  <div class="modal fade" id="avatar-edit-model" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="avatar-edit-model" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content p-3">
         <!-- model header -->
